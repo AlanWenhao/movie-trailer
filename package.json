@@ -1,0 +1,26 @@
+{
+  "name": "movie-trailer",
+  "version": "1.0.0",
+  "description": "Movie trailer from Douban",
+  "homepage": "https://github.com/AlanWenhao/movie-trailer#readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanWenhao/movie-trailer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanWenhao/movie-trailer/issues"
+  },
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "koa": "^2.5.0",
+    "koa-views": "^6.1.4",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {}
+}
