@@ -4,10 +4,144 @@ block title
     title Koa Douban 主页
 
 block content
-    .container
-        .row
-            .col-md-8
-                h1 Hi #{you}
-                p This is #{me}
-            .col-md-4
-                p This is dynamic Pug template
+    style.
+        header {
+            min-height: 50px;
+            margin-bottom: 10px;
+            background: rgba(0,0,0,.4);
+            line-height: 50px;
+        }
+        header .nav-link {
+            margin-right: 15px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        .header-title {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .card {
+            margin-top: 20px;
+            box-shadow: 0 0 30px 5px rgba(0,0,0,.3);
+        }
+        .card .card-img-top {
+            width: 100%;
+        }
+    .container-fluid
+        include ./includes/header
+        .container
+            .row
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+            .row
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+                .col-md-3
+                    .card.text-center
+                        img.card-img-top(src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2517333671.webp',
+                        data-video='https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4')
+                        .card-body
+                            h4.card-title 这是电影的标题
+                            p.card-desc 这是电影描述
+                        .card-footer
+                            samll.text-muted 1天前更新
+    #myModal.modal.fade.bd-example-modal-lg(tabindex="-1", role="dialog", aria-labelledby="myLargeModalLabel", aria-hidden="true")
+        .modal-dialog.modal-lg
+            #videoModal.modal-content
+
+    include ./includes/scripts
+
+    script.
+        var player = null;
+        $(document).ready(function() {
+            $('.card').click(function(e) {
+                if (e.target.nodeName === 'IMG') {
+                    var video = $(this).find('img').data('video');
+                    var pic = $(this).find('img').attr('src');
+
+                    $('#myModal').modal('show');
+                    $('#myModal').on('hidden.bs.modal', function() {
+                        if (player && player.pause) player.pause();
+                    })
+
+                    if(!player) {
+                        player = new DPlayer({
+                            container: document.getElementById('videoModal'),
+                            screenshot: true,
+                            video: {
+                                url: video,
+                                pic: pic,
+                                thumbnails: pic
+                            }
+                        })
+                    } else {
+                        player.switchVideo({
+                            url: video,
+                                pic: pic,
+                                thumbnails: pic
+                        });
+                    }
+                }
+            })
+        })
