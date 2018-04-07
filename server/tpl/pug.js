@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 doctype html
 html
     head
@@ -16,4 +16,4 @@ html
                     p This is #{me}
                 .col-md-4
                     p This is dynamic Pug template
-`
+`;
