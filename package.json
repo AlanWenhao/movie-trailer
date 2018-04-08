@@ -5,7 +5,8 @@
   "homepage": "https://github.com/AlanWenhao/movie-trailer#readme",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "parcel build parcel/index.html -no-cache -d parcel/dist --public-url /dist/"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "dependencies": {
     "ejs": "^2.5.8",
     "koa": "^2.5.0",
+    "koa-static": "^4.0.2",
     "koa-views": "^6.1.4",
+    "parcel-bundler": "^1.7.0",
     "pug": "^2.0.3"
   },
   "devDependencies": {}
