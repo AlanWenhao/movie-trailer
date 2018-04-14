@@ -59,6 +59,10 @@ const sleep = time => new Promise(resolve => {
     });
 
     browser.close();
-    console.log(result);
+    // console.log(result);
+
+    // 将爬取到的数据发送出去并退出进程
+    process.send({ result });
+    process.exit(0);
     
 })()
