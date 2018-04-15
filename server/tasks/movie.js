@@ -9,7 +9,7 @@ const { resolve } = require('path');
     const child = cp.fork(script, []);
 
     // 是否被调用的标识
-    let invoked = false;
+    let invoked = true;
 
     // 错误监听
     child.on('error', err => {
