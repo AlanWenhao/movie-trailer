@@ -3,8 +3,8 @@ let data = {
     movieId: 10437779,
     poster: 'https://img3.doubanio.com/view/photo/l_ratio_poster/public/p1903380040.jpg',
     cover: 'https://img3.doubanio.com/img/trailer/medium/1847827045.jpg?',
-    videoKey: 'cbXNIY_FUB4k3Mr_HnzKp.mp4',
-    coveroKey: 'qQLMsVfftlXmhJx5KXKBc.png',
+    videoKey: 'http://p7honkwrp.bkt.clouddn.com/cbXNIY_FUB4k3Mr_HnzKp.mp4',
+    coveroKey: 'http://p7honkwrp.bkt.clouddn.com/qQLMsVfftlXmhJx5KXKBc.png',
     posterKey: 'http://p7honkwrp.bkt.clouddn.com/LwKDyIPsI5pdIYMs4aOvK.png'
 };
 
