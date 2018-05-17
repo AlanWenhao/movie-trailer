@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
+const glob = require('glob'); // 一个文件类型匹配的库
+const { resolve } = require('path');
 const db = 'mongodb://localhost/douban-test';
 
 // 将mongoose中的promise替换为node全局的promise，因为mongoose可能在版本不同的情况下promise的使用方法不同
 mongoose.Promise = global.Promise;
+
+// 将schema文件夹下的所有js文件依次require
+exports.initSchemas = () => {
+    glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach(require);
+}
 
 exports.connect = () => {
     // 如果连接失败，mongo就会一直连接，这里设置一个最大重连次数
