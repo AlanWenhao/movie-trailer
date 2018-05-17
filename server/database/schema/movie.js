@@ -5,7 +5,10 @@ const Mixed = Schema.Types.Mixed; // 适合变化比较频繁的数据，里面�
 
 // 填写需要创建的字段跟每个字段的类型
 const movieSchema = new Schema({
-    doubanId: String,
+    doubanId: {
+        unique: true,
+        type: String
+    },
     rate: Number,
     title: String,
     summary: String,
@@ -34,6 +37,17 @@ const movieSchema = new Schema({
             default: Date.now()
         }
     }
+});
+
+// 使用中间件在保存之前执行一些操作
+movieSchema.pre('save', next => {
+    if (this.isNew) {
+        this.meta.createdAt = this.meta.updateAt = Date.now();
+    } else {
+        this.meta.updateAt = new Date();
+    }
+
+    next();
 });
 
 // 传入model名字与发布生成这个model所需要的数据
