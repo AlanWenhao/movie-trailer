@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt'); // 因为node-gyp 卡死原因，没有安装它，大概是因为本地缺少什么环境吧
+const bcrypt = require('bcryptjs'); // 使用它来代替bcrypt，相同的应用还有bcrypt-nodejs，区别：https://npmcompare.com/compare/bcrypt,bcrypt-nodejs,bcryptjs
 
 const Schema = mongoose.Schema;
 const Mixed = Schema.Types.Mixed; // 适合变化比较频繁的数据，里面可以存储任意类型的数据

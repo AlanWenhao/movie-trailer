@@ -45,11 +45,11 @@ exports.connect = () => {
 
         // 一旦连接成功
         mongoose.connection.once('open', () => {
-            const Dog = mongoose.model('Dog', { name: String });
-            const doga = new Dog({ name: '阿尔法' });
-            doga.save().then(() => {
-                console.log('汪汪汪');
-            })
+            // const Dog = mongoose.model('Dog', { name: String });
+            // const doga = new Dog({ name: '阿尔法' });
+            // doga.save().then(() => {
+            //     console.log('汪汪汪');
+            // })
 
             resolve();
             console.log('Mongo connect successfully ！！');

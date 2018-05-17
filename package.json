@@ -19,6 +19,7 @@
     "url": "https://github.com/AlanWenhao/movie-trailer/issues"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^2.5.8",
     "glob": "^7.1.2",
     "koa": "^2.5.0",
