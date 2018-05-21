@@ -9,10 +9,10 @@ const movieSchema = new Schema({
         unique: true,
         type: String
     },
-    category: {
+    category: [{
         type: ObjectId,
         ref: 'Category'
-    },
+    }],
     rate: Number,
     title: String,
     summary: String,
@@ -44,7 +44,7 @@ const movieSchema = new Schema({
 });
 
 // 使用中间件在保存之前执行一些操作
-movieSchema.pre('save', next => {
+movieSchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updateAt = Date.now();
     } else {

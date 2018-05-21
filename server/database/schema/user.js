@@ -43,12 +43,12 @@ const userSchema = new Schema({
 });
 
 // 增加mongoose虚拟字段存储用户是否被限制登陆，这个字段不会被实时地保存到数据库，而是每次通过get方法进行判断
-userSchema.virtual('isLocked').get(() => {
+userSchema.virtual('isLocked').get(function() {
     return !!(this.lockUntil && this.lockUntil > Date.now())
 });
 
 // 使用中间件在保存之前执行一些操作
-userSchema.pre('save', next => {
+userSchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updateAt = Date.now();
     } else {
@@ -58,7 +58,7 @@ userSchema.pre('save', next => {
     next();
 });
 
-userSchema.pre('save', next => {
+userSchema.pre('save', function(next) {
     // mongoose 提供的一个方法，查看某个字段有没有被更改
     if (!this.isModified('password')) {
         return next();

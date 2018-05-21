@@ -27,7 +27,7 @@ const categorySchema = new Schema({
 });
 
 // 使用中间件在保存之前执行一些操作
-categorySchema.pre('save', next => {
+categorySchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updateAt = Date.now();
     } else {

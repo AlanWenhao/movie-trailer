@@ -9,8 +9,8 @@ const { connect, initSchemas } = require('./database/init');
 
     initSchemas();
 
-    const Movies = mongoose.model('Movie');
-    const movies = await Movies.find({});
+    // require('./tasks/movie');
+    require('./tasks/api');
 })()
 
 const app = new Koa();
